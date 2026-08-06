@@ -136,6 +136,71 @@ body {
   color: #444640; font-size: 13px; font-weight: 500;
 }
 
+/* Comparison Overview (one-page) */
+.cmp-overview {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.cmp-card {
+  background: #EFEEEB;
+  border: 1px solid rgba(14,17,14,0.06);
+  border-radius: 17px; padding: 28px 24px;
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.cmp-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(14,17,14,0.15);
+}
+.cmp-card-highlight {
+  background: #0B0D0B;
+  border-color: #0B0D0B;
+}
+.cmp-card-highlight .cmp-logo-text { color: #FFFFFF; }
+.cmp-card-highlight .cmp-subtitle { color: #C7CBC4; }
+.cmp-card-highlight .cmp-key { color: #C7CBC4; }
+.cmp-card-highlight .cmp-val { color: #F4F5F0; }
+.cmp-card-highlight .cmp-yes { color: #8BCE9B; }
+.cmp-card-highlight .cmp-partial { color: #E8C87A; }
+.cmp-card-highlight .cmp-no { color: #D88A8A; }
+.cmp-badge {
+  position: absolute; top: -10px; right: 20px;
+  padding: 3px 12px; border-radius: 100px;
+  background: #0B0D0B; color: #FFF;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
+}
+.cmp-card-highlight .cmp-badge {
+  background: #FFF; color: #0B0D0B;
+}
+.cmp-logo-text {
+  font-size: 20px; font-weight: 700; color: #0B0C0B; margin-bottom: 4px;
+}
+.cmp-subtitle {
+  font-size: 13px; color: #6B6E66; margin-bottom: 20px; padding-bottom: 16px;
+  border-bottom: 1px solid rgba(14,17,14,0.08);
+}
+.cmp-card-highlight .cmp-subtitle {
+  border-bottom-color: rgba(255,255,255,0.1);
+}
+.cmp-rows { display: flex; flex-direction: column; gap: 10px; }
+.cmp-row {
+  display: flex; flex-direction: column; gap: 3px;
+  padding: 8px 0; border-bottom: 1px solid rgba(14,17,14,0.04);
+}
+.cmp-card-highlight .cmp-row {
+  border-bottom-color: rgba(255,255,255,0.05);
+}
+.cmp-row:last-child { border-bottom: none; }
+.cmp-key {
+  font-size: 11px; color: #6B6E66; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.cmp-val {
+  font-size: 13px; color: #444640; line-height: 1.5;
+}
+.cmp-yes { color: #2D7A3E; font-weight: 500; }
+.cmp-partial { color: #8A6D1F; }
+.cmp-no { color: #B04040; }
+
 /* Footer */
 .footer {
   background: #0A0C0A;
@@ -159,6 +224,7 @@ body {
 @media (max-width: 900px) {
   .scenario-grid { grid-template-columns: repeat(2, 1fr); }
   .audience-grid { grid-template-columns: repeat(2, 1fr); }
+  .cmp-overview { grid-template-columns: 1fr; }
   .section { padding: 40px 20px; }
   .hero h1 { font-size: 38px; }
 }
@@ -221,9 +287,55 @@ body {
   </div>
 </div>
 
+
+<div class="section">
+  <h2 class="section-title">竞品对比一览</h2>
+  <p class="section-desc">千问办公 vs 豆包办公 vs WorkBuddy — 三大AI办公Agent核心差异</p>
+  <div class="cmp-overview">
+    <div class="cmp-card cmp-card-highlight">
+      <div class="cmp-badge">推荐</div>
+      <div class="cmp-logo-text">千问办公</div>
+      <div class="cmp-subtitle">阿里 · 钉钉生态</div>
+      <div class="cmp-rows">
+        <div class="cmp-row"><span class="cmp-key">IM生态</span><span class="cmp-val cmp-yes">钉钉深度打通（审批/考勤/文档/听记/表格）</span></div>
+        <div class="cmp-row"><span class="cmp-key">多模态</span><span class="cmp-val cmp-yes">图像+视频理解与生成，SOTA模型持续跟进</span></div>
+        <div class="cmp-row"><span class="cmp-key">网页发布</span><span class="cmp-val cmp-yes">创作→一键发布→分享，全闭环</span></div>
+        <div class="cmp-row"><span class="cmp-key">浏览器自动化</span><span class="cmp-val cmp-yes">自建Chrome插件，真实浏览器环境</span></div>
+        <div class="cmp-row"><span class="cmp-key">专业工作台</span><span class="cmp-val cmp-yes">写作/设计/PPT三大场景化模式</span></div>
+        <div class="cmp-row"><span class="cmp-key">电商数据源</span><span class="cmp-val cmp-yes">1688/淘宝/天猫原生接入</span></div>
+      </div>
+    </div>
+    <div class="cmp-card">
+      <div class="cmp-logo-text">豆包办公</div>
+      <div class="cmp-subtitle">字节 · 飞书生态</div>
+      <div class="cmp-rows">
+        <div class="cmp-row"><span class="cmp-key">IM生态</span><span class="cmp-val cmp-yes">飞书深度整合（文档/会议/日历/知识库）</span></div>
+        <div class="cmp-row"><span class="cmp-key">多模态</span><span class="cmp-val cmp-yes">豆包2.1模型，图像/视频生成支持</span></div>
+        <div class="cmp-row"><span class="cmp-key">网页发布</span><span class="cmp-val cmp-partial">可生成网页应用，需手动部署</span></div>
+        <div class="cmp-row"><span class="cmp-key">浏览器自动化</span><span class="cmp-val cmp-partial">自主浏览网页，非结构化RPA</span></div>
+        <div class="cmp-row"><span class="cmp-key">专业工作台</span><span class="cmp-val cmp-no">通用对话模式，无场景化工作台</span></div>
+        <div class="cmp-row"><span class="cmp-key">电商数据源</span><span class="cmp-val cmp-no">无原生电商数据接入</span></div>
+      </div>
+    </div>
+    <div class="cmp-card">
+      <div class="cmp-logo-text">WorkBuddy</div>
+      <div class="cmp-subtitle">腾讯 · 企微生态</div>
+      <div class="cmp-rows">
+        <div class="cmp-row"><span class="cmp-key">IM生态</span><span class="cmp-val cmp-partial">企微/微信打通，飞书/钉钉需连接器</span></div>
+        <div class="cmp-row"><span class="cmp-key">多模态</span><span class="cmp-val cmp-partial">图像+短视频(5-8s)，3D模型生成</span></div>
+        <div class="cmp-row"><span class="cmp-key">网页发布</span><span class="cmp-val cmp-partial">可生成网页，需CloudStudio部署</span></div>
+        <div class="cmp-row"><span class="cmp-key">浏览器自动化</span><span class="cmp-val cmp-yes">Agent Browser Skill自主浏览</span></div>
+        <div class="cmp-row"><span class="cmp-key">专业工作台</span><span class="cmp-val cmp-no">通用Agent模式，Skills库扩展</span></div>
+        <div class="cmp-row"><span class="cmp-key">电商数据源</span><span class="cmp-val cmp-no">无原生电商数据接入</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="section">
   <h2 class="section-title">五大核心优势</h2>
-  <p class="section-desc">对比竞品（如WorkBuddy）的差异化能力壁垒</p>
+  <p class="section-desc">对比竞品（如豆包办公、WorkBuddy）的差异化能力壁垒</p>
   <div class="advantage-list">
     
         <div class="advantage-item">
