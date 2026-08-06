@@ -115,6 +115,74 @@ body {
 }
 .adv-row p { font-size: 13px; color: #444640; flex: 1; }
 
+/* Comparison Table (two-page) */
+.cmp-table-wrap {
+  overflow-x: auto; margin-bottom: 40px;
+  border-radius: 17px; border: 1px solid rgba(14,17,14,0.08);
+}
+.cmp-table {
+  width: 100%; border-collapse: collapse; font-size: 13px; background: #FFF;
+}
+.cmp-table th {
+  padding: 16px 14px; text-align: left; font-weight: 600;
+  background: #EFEEEB; border-bottom: 2px solid rgba(14,17,14,0.1);
+  font-size: 14px; color: #0B0C0B;
+}
+.cmp-col-dim { width: 14%; }
+.cmp-col-main { width: 32%; background: rgba(11,13,11,0.03); }
+.cmp-col-comp { width: 27%; }
+.cmp-table th.cmp-col-main {
+  background: #0B0D0B; color: #FFF; position: relative;
+}
+.cmp-table th.cmp-col-main::after {
+  content: '推荐'; position: absolute; top: 4px; right: 8px;
+  font-size: 10px; padding: 2px 8px; border-radius: 100px;
+  background: rgba(255,255,255,0.15); font-weight: 500; letter-spacing: 0.5px;
+}
+.cmp-table td {
+  padding: 12px 14px; border-bottom: 1px solid rgba(14,17,14,0.05);
+  vertical-align: top; color: #444640; line-height: 1.6;
+}
+.cmp-table td.cmp-dim {
+  font-weight: 600; color: #0B0C0B; font-size: 12px;
+  background: #F7F7F3; white-space: nowrap;
+}
+.cmp-table td.cmp-main-cell {
+  background: rgba(11,13,11,0.02); font-weight: 500; color: #0B0C0B;
+}
+.cmp-group-row td {
+  background: #E8E6E0; font-weight: 700; color: #0B0C0B;
+  font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+  padding: 8px 14px; border-bottom: 2px solid rgba(14,17,14,0.08);
+}
+.cmp-yes { color: #2D7A3E; font-weight: 500; }
+.cmp-partial { color: #8A6D1F; }
+.cmp-no { color: #B04040; }
+.cmp-table tr:hover td { background: rgba(14,17,14,0.02); }
+.cmp-table tr:hover td.cmp-main-cell { background: rgba(11,13,11,0.04); }
+.cmp-table tr:hover td.cmp-dim { background: rgba(14,17,14,0.04); }
+
+/* Comparison Analysis */
+.cmp-analysis {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px;
+}
+.cmp-analysis-card {
+  background: #EFEEEB;
+  border: 1px solid rgba(14,17,14,0.06);
+  border-radius: 17px; padding: 24px 22px;
+}
+.cmp-analysis-card h3 {
+  font-size: 15px; color: #0B0C0B; margin-bottom: 10px; font-weight: 600;
+}
+.cmp-analysis-card p {
+  font-size: 13px; color: #444640; line-height: 1.7; margin-bottom: 12px;
+}
+.cmp-analysis-tag {
+  font-size: 12px; color: #6B6E66;
+  padding: 6px 12px; border-radius: 8px; background: #E0DED6;
+  display: inline-block; font-weight: 500;
+}
+
 /* Audience */
 .audience-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
 .audience-card {
@@ -233,8 +301,190 @@ body {
     <span>产品宣传手册 · 第二页</span>
   </div>
 
+  <h2 class="section-title">竞品全面对比</h2>
+  <p class="section-desc">千问办公 vs 豆包办公 vs WorkBuddy — 逐维度详细对比</p>
+  
+<div class="cmp-table-wrap">
+  <table class="cmp-table">
+    <thead>
+      <tr>
+        <th class="cmp-col-dim">对比维度</th>
+        <th class="cmp-col-main">千问办公</th>
+        <th class="cmp-col-comp">豆包办公</th>
+        <th class="cmp-col-comp">WorkBuddy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="cmp-group-row"><td colspan="4">产品定位与生态</td></tr>
+      <tr>
+        <td class="cmp-dim">开发公司</td>
+        <td class="cmp-main-cell">阿里巴巴</td>
+        <td>字节跳动</td>
+        <td>腾讯</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">深度绑定IM</td>
+        <td class="cmp-main-cell">钉钉（审批/考勤/文档/听记/AI表格/知识库/日程/DING消息）</td>
+        <td>飞书（文档/会议/日历/知识库/群聊AI）</td>
+        <td>企业微信/微信（企微打通，微信远程指令）</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">其他IM支持</td>
+        <td class="cmp-main-cell">未来打通主流IM工具</td>
+        <td>不支持钉钉/企微</td>
+        <td>飞书需连接器，钉钉官方列出但无详细教程</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">企业版状态</td>
+        <td class="cmp-main-cell">已上线，企业管理后台可用</td>
+        <td>企业版内测中，飞书团队刚合并整合</td>
+        <td>已上线团队版/企业专享版</td>
+      </tr>
+
+      <tr class="cmp-group-row"><td colspan="4">AI Agent核心能力</td></tr>
+      <tr>
+        <td class="cmp-dim">任务执行模式</td>
+        <td class="cmp-main-cell">Agent-loop优化（感知→规划→工具→观察→再规划）</td>
+        <td>办公任务模式（本地控制+自主浏览+Skills+定时任务）</td>
+        <td>多Agent协作（任务分解→并行执行→自检纠错）</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">多模型策略</td>
+        <td class="cmp-main-cell">SOTA模型引入，持续跟进前沿</td>
+        <td>豆包2.1 Pro自研模型为主</td>
+        <td>混元/DeepSeek/GLM/Kimi/MiniMax五模型动态切换</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">定时任务</td>
+        <td class="cmp-main-cell">支持，定时调度自动化流程</td>
+        <td>支持，定时报告/提醒/学习材料分发</td>
+        <td>支持，云端24/7托管，本地客户端可关闭</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">本地文件操作</td>
+        <td class="cmp-main-cell">支持，读写/创建/修改文档</td>
+        <td>支持，文件整理/重命名/归档/Excel批量操作</td>
+        <td>支持，授权目录内读写/创建/修改</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">任务执行可靠性</td>
+        <td class="cmp-main-cell">Agent-loop优化，算粒消耗降低，产出质量提升</td>
+        <td>实测4个任务3个未完成，可靠性待提升</td>
+        <td>多Agent自检纠错，偶有排队和重试</td>
+      </tr>
+
+      <tr class="cmp-group-row"><td colspan="4">多模态能力</td></tr>
+      <tr>
+        <td class="cmp-dim">图像理解</td>
+        <td class="cmp-main-cell cmp-yes">支持，截图/商品图/网页分析</td>
+        <td class="cmp-yes">支持</td>
+        <td class="cmp-yes">支持（Kimi-K3视觉）</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">视频理解</td>
+        <td class="cmp-main-cell cmp-yes">支持，音视频材料理解</td>
+        <td class="cmp-yes">支持</td>
+        <td class="cmp-partial">有限支持，截图+视觉反馈迭代</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">图像生成</td>
+        <td class="cmp-main-cell cmp-yes">SOTA模型，营销海报/商品图/PPT配图</td>
+        <td class="cmp-yes">支持，专业图像设计生成</td>
+        <td class="cmp-yes">支持，混元模型集成</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">视频生成</td>
+        <td class="cmp-main-cell cmp-yes">品牌宣传片/短视频广告，时长充足</td>
+        <td class="cmp-yes">Seedance 2.5模型集成</td>
+        <td class="cmp-partial">5-8秒，复杂动作不自然</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">音乐/BGM生成</td>
+        <td class="cmp-main-cell cmp-yes">支持，文本生成音乐</td>
+        <td class="cmp-yes">支持</td>
+        <td class="cmp-no">未明确支持</td>
+      </tr>
+
+      <tr class="cmp-group-row"><td colspan="4">差异化能力</td></tr>
+      <tr>
+        <td class="cmp-dim">网页创作与发布</td>
+        <td class="cmp-main-cell cmp-yes">创作→一键发布→公开链接，全闭环</td>
+        <td class="cmp-partial">可生成网页应用，需手动部署</td>
+        <td class="cmp-partial">可生成网页，需CloudStudio部署</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">专业工作台</td>
+        <td class="cmp-main-cell cmp-yes">写作/设计/PPT三大场景化模式</td>
+        <td class="cmp-no">通用对话模式，无场景化工作台</td>
+        <td class="cmp-no">通用Agent模式，Skills库扩展</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">浏览器自动化</td>
+        <td class="cmp-main-cell cmp-yes">自建Chrome插件，真实浏览器环境，低封号风险</td>
+        <td class="cmp-partial">自主浏览网页，非传统RPA</td>
+        <td class="cmp-yes">Agent Browser Skill自主浏览</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">电商数据源</td>
+        <td class="cmp-main-cell cmp-yes">1688/淘宝/天猫原生接入，选品→分析→素材闭环</td>
+        <td class="cmp-no">无原生电商数据接入</td>
+        <td class="cmp-no">无原生电商数据接入</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">社交平台调研</td>
+        <td class="cmp-main-cell cmp-yes">小红书/微博/微信公众号/知乎内容检索</td>
+        <td class="cmp-partial">网页搜索，无特定社媒平台接入</td>
+        <td class="cmp-partial">Web Search + Skills聚合社媒讨论</td>
+      </tr>
+
+      <tr class="cmp-group-row"><td colspan="4">定价（个人版）</td></tr>
+      <tr>
+        <td class="cmp-dim">免费版</td>
+        <td class="cmp-main-cell">每日赠送500积分</td>
+        <td>可用，办公任务模式有限额度</td>
+        <td>基础自动化和写作，有限Credits</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">付费起步</td>
+        <td class="cmp-main-cell">连续包月8折 / 年付7折</td>
+        <td>68元/月（标准版连续包月）</td>
+        <td>99元/月（个人版2,000 Credits）</td>
+      </tr>
+      <tr>
+        <td class="cmp-dim">高级版</td>
+        <td class="cmp-main-cell">详见官网定价页</td>
+        <td>500元/月（高级版10倍额度）</td>
+        <td>198元/月/人（团队旗舰版）</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+  <h2 class="section-title">差异化定位分析</h2>
+  <p class="section-desc">三款产品各有所长，选择取决于企业现有生态与核心场景</p>
+  
+<div class="cmp-analysis">
+  <div class="cmp-analysis-card">
+    <h3>千问办公 — 钉钉生态内的最佳选择</h3>
+    <p>核心壁垒在于钉钉生态的深度调用能力（审批、考勤、听记、AI表格等），已部署钉钉的企业开箱即用。独有的网页一键发布闭环和专业工作台模式，在场景化深度上明显领先。电商数据源原生接入是三款产品中唯一的差异化能力。</p>
+    <p class="cmp-analysis-tag">最佳适用：已部署钉钉的中大型企业、电商团队、市场/增长团队</p>
+  </div>
+  <div class="cmp-analysis-card">
+    <h3>豆包办公 — 飞书生态的AI助手</h3>
+    <p>背靠字节豆包大模型，消费端用户基数大（2亿+），多模态生成能力较强。企业版刚内测，飞书团队合并整合中，企业级能力尚未成熟。办公任务模式实测可靠性有待提升，无专业工作台和电商数据源。网页发布需手动部署，未形成闭环。</p>
+    <p class="cmp-analysis-tag">最佳适用：已部署飞书的企业、个人创作者、内容团队</p>
+  </div>
+  <div class="cmp-analysis-card">
+    <h3>WorkBuddy — 多模型灵活切换的Agent平台</h3>
+    <p>最大优势是五模型动态切换和Skills生态（7万+技能），多Agent协作模式适合复杂任务分解。企微/微信生态深度整合。但视频生成受限（5-8秒），无专业工作台，无电商数据源，浏览器自动化依赖Skills而非自建插件。Credits消耗较快，重度用户需额外购买。</p>
+    <p class="cmp-analysis-tag">最佳适用：已部署企微的企业、需要多模型灵活切换的团队</p>
+  </div>
+</div>
+
+
   <h2 class="section-title">五大核心优势</h2>
-  <p class="section-desc">对比竞品（如WorkBuddy）的差异化能力壁垒</p>
+  <p class="section-desc">对比竞品的差异化能力壁垒</p>
   <div class="advantage-list">
     
         <div class="advantage-item">
